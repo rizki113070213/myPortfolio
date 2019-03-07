@@ -13,10 +13,8 @@ class PortfoliosController < ApplicationController
     respond_to do |format|
       if @portfolio_item.save
         format.html { redirect_to portfolios_path, notice: 'Your portfolio item was successfully lived.' }
-        # format.json { render :show, status: :created, location: @portfolio_item }
       else
         format.html { render :new }
-        format.json { render json: @portfolio_item.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -31,16 +29,23 @@ class PortfoliosController < ApplicationController
     respond_to do |format|
       if @portfolio_item.update(params.require(:portfolio).permit(:title, :subtitle, :body))
         format.html { redirect_to portfolios_path, notice: 'Blog was successfully updated.' }
-        # format.json { render :show, status: :ok, location: @blog }
       else
         format.html { render :edit }
-        format.json { render json: @blog.errors, status: :unprocessable_entity }
       end
     end
   end
 
   def show
     @portfolio_item = Portfolio.find(params[:id])
+  end
+
+  def destroy
+    @portfolio_item = Portfolio.find(params[:id])
+
+    @portfolio_item.destroy
+    respond_to do |format|
+      format.html { redirect_to portfolios_path, notice: 'Portfolio item was successfully destroyed.' }
+    end
   end
 
 end
