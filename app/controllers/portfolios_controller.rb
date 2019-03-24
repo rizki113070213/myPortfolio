@@ -1,8 +1,11 @@
 class PortfoliosController < ApplicationController
   before_action :set_portfolio, only: [:edit, :update, :show, :destroy]
+  layout "portfolio"
 
   def index
     @portfolio_items = Portfolio.all
+    @page_title = "#{@page_title} | Portfolios"
+    @seo_keywords = "#{@seo_keywords} | Portfolios"
   end
 
   def new
@@ -36,6 +39,8 @@ class PortfoliosController < ApplicationController
   end
 
   def show
+    @page_title = "#{@page_title} | #{@portfolio_item.title}"
+    @seo_keywords = "#{@seo_keywords} | #{@portfolio_item.technologies}"
   end
 
   def destroy

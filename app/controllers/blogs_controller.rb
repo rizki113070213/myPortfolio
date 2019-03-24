@@ -1,15 +1,20 @@
 class BlogsController < ApplicationController
   before_action :set_blog, only: [:show, :edit, :update, :destroy, :toggle_status]
+  layout "blog"
 
   # GET /blogs
   # GET /blogs.json
   def index
     @blogs = Blog.all
+    @page_title = "#{@page_title} | Blogs"
+    @seo_keywords = "#{@seo_keywords} | Blogs"
   end
 
   # GET /blogs/1
   # GET /blogs/1.json
   def show
+    @page_title = "#{@page_title} | #{@blog.title}"
+    @seo_keywords = "#{@seo_keywords} | #{@blog.body}"
   end
 
   # GET /blogs/new
@@ -62,7 +67,7 @@ class BlogsController < ApplicationController
   end
 
   def toggle_status
-    @blog.draft? ? @blog.published! : @blog.draft! 
+    @blog.draft? ? @blog.published! : @blog.draft!
     redirect_to blogs_url, notice: 'Blog status has been updated.'
   end
 
