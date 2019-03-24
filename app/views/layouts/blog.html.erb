@@ -21,6 +21,6 @@
 
     <%= render "shared/nav", location: "bottom" %>
 
-    <p><%= session[:source] ? "Thanks for visiting me from #{session[:source]}" : nil  %></p>
+    <%= source_helper %>
   </body>
 </html>
