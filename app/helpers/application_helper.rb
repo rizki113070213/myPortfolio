@@ -1,11 +1,11 @@
 module ApplicationHelper
-  def login_helper
+  def login_helper style
     if !user_signed_in?
-      (link_to "LOG IN", new_user_session_path) +
-      "<br>".html_safe +
-      (link_to "SIGN UP", new_user_registration_path)
+      (link_to "Log In", new_user_session_path, class: style) +
+      " ".html_safe +
+      (link_to "Sign Up", new_user_registration_path, class: style)
     else
-      link_to "LOG OUT", destroy_user_session_path, method: :delete
+      link_to "Log Out", destroy_user_session_path, method: :delete, class: style
     end
   end
 
