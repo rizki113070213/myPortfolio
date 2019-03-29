@@ -4,7 +4,7 @@ class PortfoliosController < ApplicationController
   access all: [:show, :index], user: {except: [:destroy, :new, :create, :edit, :update]}, site_admin: :all
 
   def index
-    @portfolio_items = Portfolio.all
+    @portfolio_items = Portfolio.by_position
     @page_title = "#{@page_title} | Portfolios"
     @seo_keywords = "#{@seo_keywords} | Portfolios"
   end
