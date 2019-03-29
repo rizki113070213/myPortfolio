@@ -9,6 +9,14 @@ class PortfoliosController < ApplicationController
     @seo_keywords = "#{@seo_keywords} | Portfolios"
   end
 
+  def sort
+    params[:order].each do |key, value|
+      Portfolio.find(value[:id]).update(position: value[:position])
+    end
+
+    head :ok
+  end
+
   def new
     @portfolio_item = Portfolio.new
     3.times {@portfolio_item.technologies.build}
