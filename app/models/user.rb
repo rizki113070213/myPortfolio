@@ -14,6 +14,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   validates_presence_of :name
+  
+  has_many :comment, dependent: :destroy
 
   def first_name
     self.name.split.first
