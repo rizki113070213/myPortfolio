@@ -1,6 +1,19 @@
 <div class="col-sm-8 blog-main">
   <h2><%= @blog.title %></h2>
   <p><%= @blog.body %></p>
+
+  <% unless logged_in? %>
+    <%= form_for @comment, url: "#" do |f| %>
+      <div class="form-group">
+        <%= f.text_area :content, placeholder: "Comment...", class: "form-control", rows: 5 %>
+      </div>
+
+      <%= f.submit "Post Comment", class: "btn btn-primary" %>
+    <% end %>
+  <% end %>
+
+  <%= render @blog.comments %>
+
   <% if logged_in?(:site_admin) %>
     <%= link_to 'Edit', edit_blog_path(@blog) %> |
   <% end %>
