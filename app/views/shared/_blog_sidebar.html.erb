@@ -3,6 +3,18 @@
     <h4>About</h4>
     <p>Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
   </div>
+
+  <div class="sidebar-module">
+    <h4>Topic</h4>
+    <span>
+      <% @sidebar_topics.each do |topic| %>
+        <div class="btn btn-info btn-sm">
+          <%= link_to topic.title, topic, style: "color: white; text-decoration: none" %>
+        </div>
+      <% end%>
+    </span>
+  </div>
+
   <div class="sidebar-module">
     <h4>Elsewhere</h4>
     <ol class="list-unstyled social-links">
