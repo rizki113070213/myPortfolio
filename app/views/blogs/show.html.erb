@@ -2,7 +2,7 @@
   <h2><%= @blog.title %></h2>
   <h6><%= @blog.topic.title %></h6>
 
-  <p><%= @blog.body %></p>
+  <p><%= markdown @blog.body %></p>
 
   <% if logged_in?(:site_admin) %>
     <%= link_to 'Edit', edit_blog_path(@blog) %> |
