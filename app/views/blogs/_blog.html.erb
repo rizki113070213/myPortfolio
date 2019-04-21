@@ -3,7 +3,6 @@
   <p class="blog-post-meta"><%= blog.published? ? "Published" : "Drafted" %> <%= distance_of_time_in_words(blog.updated_at, Time.now) %> ago</p>
   <p><%= blog.body %></p>
   <% if logged_in?(:site_admin) %>
-    <%= link_to (blog.published? ? "Drafted" : "Published"), toggle_status_blog_path(blog) %> /
     <%= link_to 'Edit', edit_blog_path(blog) %> /
     <%= link_to 'Destroy', blog, method: :delete, data: { confirm: 'Are you sure?' } %>
   <% end %>
