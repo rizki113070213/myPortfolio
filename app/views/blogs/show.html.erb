@@ -1,15 +1,19 @@
 <div class="col-sm-8 blog-main">
   <h2><%= @blog.title %></h2>
+  <h6><%= @blog.topic.title %></h6>
+
   <p><%= @blog.body %></p>
+
+  <% if logged_in?(:site_admin) %>
+    <%= link_to 'Edit', edit_blog_path(@blog) %> |
+  <% end %>
+  <%= link_to 'Back', blogs_path %>
+
+  <hr>
 
   <%= render "comments/comment_form" %>
 
   <div id="comments" data-blog-id="<%= @blog.id %>">
     <%= render @blog.comments.order("created_at DESC") %>
   </div>
-
-  <% if logged_in?(:site_admin) %>
-    <%= link_to 'Edit', edit_blog_path(@blog) %> |
-  <% end %>
-  <%= link_to 'Back', blogs_path %>
 </div>
