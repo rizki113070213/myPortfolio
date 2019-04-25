@@ -39,7 +39,7 @@ body {
 
 .card {
   float: left;
-  width: 33.333%;
+  width: 100%;
   padding: .75rem;
   margin-bottom: 2rem;
   border: 0;
@@ -91,4 +91,9 @@ footer p {
 
 .album > .container > .alert {
   text-align: center;
+}
+
+.col-md-4 > .card > .responsive {
+  width: 100%;
+  height: auto;
 }
