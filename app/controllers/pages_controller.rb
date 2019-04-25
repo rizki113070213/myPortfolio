@@ -3,6 +3,7 @@ class PagesController < ApplicationController
   end
 
   def about
+    @skills = Skill.utilized
   end
 
   def contact
