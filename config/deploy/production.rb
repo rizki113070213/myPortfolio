@@ -1,15 +1,3 @@
-set :application, "myPortfolio"
-set :repo_url, "git@github.com:rizki113070213/myPortfolio.git"
-
-# Deploy to the user's home directory
-set :deploy_to, "/home/deploy/#{fetch :application}"
-
-append :linked_dirs, 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', '.bundle', 'public/system', 'public/uploads'
-
-# Only keep the last 5 releases to save disk space
-set :keep_releases, 5
-
-server '134.209.110.200', user: 'deploy', roles: %w{app db web}
 # server-based syntax
 # ======================
 # Defines a single server with a list of roles and multiple properties.
@@ -19,7 +7,7 @@ server '134.209.110.200', user: 'deploy', roles: %w{app db web}
 # server "example.com", user: "deploy", roles: %w{app web}, other_property: :other_value
 # server "db.example.com", user: "deploy", roles: %w{db}
 
-
+server '134.209.110.200', user: 'deploy', roles: %w{app db web}
 
 # role-based syntax
 # ==================
